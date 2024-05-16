@@ -1,7 +1,7 @@
 // ItemGroup.jsx
 import React, { useState } from 'react';
 import "./Itemgroup.css";
-
+import Sidebar from '../Components/Sidebar';
 const ItemGroup = () => {
     const [showAddGroupModal, setShowAddGroupModal] = useState(false);
     const [itemGroups, setItemGroups] = useState([]);
@@ -24,10 +24,12 @@ const ItemGroup = () => {
     };
 
     return (
+      <>
+      <Sidebar/>
       <div className="item-group-container">
         <div className="container1">
-          <h1>Item Groups</h1>
-          <button onClick={handleAddGroupClick}>Add New Group</button>
+          <h1 className='item-group'>Item Groups</h1>
+          <button className="btn" onClick={handleAddGroupClick}>Add New Group</button>
         </div>
         <hr />
         <div className="container2">
@@ -36,7 +38,7 @@ const ItemGroup = () => {
         </div>
   
         {/* Display item groups in a table */}
-        <table>
+        <table className='item-group-table'>
           <thead>
             <tr>
               <th>Group Name</th>
@@ -70,6 +72,7 @@ const ItemGroup = () => {
 )}
 
       </div>
+      </>
     );
 };
 
@@ -117,26 +120,26 @@ const AddGroupModal = ({show, onClose, onSubmit }) => {
   
     return (
       <div className={`modal ${show ? 'show' : ''}`}>
-        <div className="modal-content">
-          <span className="close" onClick={onClose}>&times;</span>
+        <div className="modal-content1">
+          <span className="item-group-close" onClick={onClose}>&times;</span>
           <h2>Add New Group</h2>
           <label>Group Name:</label>
-          <input type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
+          <input  className="group-input" type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
           <label>Short Name:</label>
-          <input type="text" value={groupShortName} onChange={(e) => setGroupShortName(e.target.value)} />
+          <input className="group-input" type="text" value={groupShortName} onChange={(e) => setGroupShortName(e.target.value)} />
           <label>Attribute 1:</label>
-          <input type="text" value={attribute1} onChange={(e) => setAttribute1(e.target.value)} />
+          <input className="group-input" type="text" value={attribute1} onChange={(e) => setAttribute1(e.target.value)} />
           <label>Attribute 2:</label>
-          <input type="text" value={attribute2} onChange={(e) => setAttribute2(e.target.value)} />
+          <input className="group-input" type="text" value={attribute2} onChange={(e) => setAttribute2(e.target.value)} />
           <label>Attribute 3:</label>
-          <input type="text" value={attribute3} onChange={(e) => setAttribute3(e.target.value)} />
+          <input className="group-input" type="text" value={attribute3} onChange={(e) => setAttribute3(e.target.value)} />
           <label>Attribute 4:</label>
-          <input type="text" value={attribute4} onChange={(e) => setAttribute4(e.target.value)} />
+          <input className="group-input" type="text" value={attribute4} onChange={(e) => setAttribute4(e.target.value)} />
           <label>Attribute 5:</label>
-          <input type="text" value={attribute5} onChange={(e) => setAttribute5(e.target.value)} />
+          <input className="group-input"  type="text" value={attribute5} onChange={(e) => setAttribute5(e.target.value)} />
           <label>Attribute 6:</label>
-          <input type="text" value={attribute6} onChange={(e) => setAttribute6(e.target.value)} />
-          <button onClick={handleSubmit}>Submit</button>
+          <input className="group-input" type="text" value={attribute6} onChange={(e) => setAttribute6(e.target.value)} />
+          <button className="submit-btn" onClick={handleSubmit}>Submit</button>
         </div>
       </div>
     );

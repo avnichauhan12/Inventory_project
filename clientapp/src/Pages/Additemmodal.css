@@ -1,0 +1,84 @@
+/* .modal-item { 
+    top: 0;
+    left: 0;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    padding: 20px 20px;
+ } */
+ .modal-item {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Ensure full viewport height */
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center the modal content vertically */
+    z-index: 9999; 
+    overflow: hidden;
+}
+.modal-content-item {
+    background-color: #fefefe;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    height: 90vh;
+    /* width: 100vw; */
+    max-width: 95%;;
+    overflow: auto;
+}
+.item-name{
+    text-align: center;
+    padding: 15px;
+    text-decoration: solid;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    margin-top: 30px;
+}
+.item-form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .item-container {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+  }
+  
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+.item-name{
+    font-size: 30px;
+    margin: 8px;
+}
+.item-table {
+    
+    overflow-y: auto;
+    overflow-x: auto;
+    border: solid .4px gray;
+}
+
+.item-submit {
+    margin-top: 20px;
+    width: fit-content;
+}
+
+.item-container label{
+    
+    white-space: nowrap;
+}
+.item-container input {
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 200px;
+}
