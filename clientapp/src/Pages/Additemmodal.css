@@ -27,9 +27,11 @@
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    height: 90vh;
+    position: absolute;
+    height: 90vh; 
     /* width: 100vw; */
-    max-width: 95%;;
+    /* min-width: 500px; */
+    min-width: 95%;;
     overflow: auto;
 }
 .item-name{
@@ -50,7 +52,14 @@
     align-items: center;
     padding: 10px;
   }
-  
+  .tab-container{
+    display: flex;
+    padding: 6px;
+    gap: 60px;
+  }
+  .tab-container:hover{
+    text-decoration: underline;
+  }
 .close {
     position: absolute;
     top: 10px;

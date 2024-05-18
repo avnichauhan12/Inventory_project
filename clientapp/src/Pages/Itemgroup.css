@@ -92,19 +92,21 @@ th {
   padding: 20px;
   border: 1px solid #888;
   border-radius: 5px;
-  width: 500px;
-  height: 500px;
+  width: 900px;
+  height: 400px;
   overflow: auto;
 }
 .modal .show{
   display: flex;
 }
 .group-input{
-  width: 300px;
+  width: 160px;
   border: 1px solid black;
-  border-radius: 5px;
+  border-radius: 3px;
 }
-
+.group-con{
+  display: flex;
+}
 .item-group-close {
   color: #aaa;
   align-self: flex-end; /* Align to the right */

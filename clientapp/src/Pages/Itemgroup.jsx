@@ -122,24 +122,47 @@ const AddGroupModal = ({show, onClose, onSubmit }) => {
       <div className={`modal ${show ? 'show' : ''}`}>
         <div className="modal-content1">
           <span className="item-group-close" onClick={onClose}>&times;</span>
-          <h2>Add New Group</h2>
+          <h2 style={{padding:'20px',textAlign:'center'}}>Add New Group</h2>
+          <div className='group-con' style={{display: 'flex',gap: '40px'}}>
+           <div style={{display:'flex',marginLeft:'40px'}}>
           <label>Group Name:</label>
+          
           <input  className="group-input" type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
-          <label>Short Name:</label>
+          </div>
+          <div style={{display:'flex'}}>
+          <label style={{}}>Short Name:</label>
           <input className="group-input" type="text" value={groupShortName} onChange={(e) => setGroupShortName(e.target.value)} />
+          </div>
+          </div>
+          <div className='group-con' style={{display: 'flex',gap: '40px',padding:'10px'}}>
+          <div style={{display:'flex',marginLeft:'40px'}}>
           <label>Attribute 1:</label>
           <input className="group-input" type="text" value={attribute1} onChange={(e) => setAttribute1(e.target.value)} />
+          </div>
+          <div style={{display:'flex'}}>
           <label>Attribute 2:</label>
           <input className="group-input" type="text" value={attribute2} onChange={(e) => setAttribute2(e.target.value)} />
+          </div>
+          <div style={{display:'flex'}}>
           <label>Attribute 3:</label>
           <input className="group-input" type="text" value={attribute3} onChange={(e) => setAttribute3(e.target.value)} />
+          </div>
+          </div>
+          <div className='group-con' style={{display: 'flex',gap: '40px',padding:'10px'}}>
+          <div style={{display:'flex',marginLeft:'40px'}}>
           <label>Attribute 4:</label>
           <input className="group-input" type="text" value={attribute4} onChange={(e) => setAttribute4(e.target.value)} />
+          </div>
+          <div style={{display:'flex'}}>
           <label>Attribute 5:</label>
           <input className="group-input"  type="text" value={attribute5} onChange={(e) => setAttribute5(e.target.value)} />
+          </div>
+          <div style={{display:'flex'}}>
           <label>Attribute 6:</label>
           <input className="group-input" type="text" value={attribute6} onChange={(e) => setAttribute6(e.target.value)} />
-          <button className="submit-btn" onClick={handleSubmit}>Submit</button>
+          </div>
+          </div>
+          <button className="submit-btn" style={{marginLeft:'60px',}} onClick={handleSubmit}>Submit</button>
         </div>
       </div>
     );
