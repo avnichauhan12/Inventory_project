@@ -7,51 +7,57 @@ import {
     FaRegChartBar,
     FaShoppingBag,
     FaThList,
-    FaAngleRight // New icon for indicating submenu
-}from "react-icons/fa";
+    FaAngleRight, // New icon for indicating submenu
+    FaUserTie // New icon for Vendor
+} from "react-icons/fa";
 import { NavLink } from 'react-router-dom';
 
 const Sidebar = ({children}) => {
-    const [isOpen ,setIsOpen] = useState(false);
-    const toggle = () => setIsOpen (!isOpen);
+    const [isOpen, setIsOpen] = useState(false);
+    const toggle = () => setIsOpen(!isOpen);
     const [masterMenuOpen, setMasterMenuOpen] = useState(false); // State to track if master menu is open
     
-    const menuItem=[
+    const menuItem = [
         {
-            path:"/",
-            name:"Dashboard",
-            icon:<FaTh/>
+            path: "/",
+            name: "Dashboard",
+            icon: <FaTh/>
         },
         {
-            name:"Master",
-            icon:<FaTh/>, // You can replace with relevant icon
+            name: "Master",
+            icon: <FaTh/>, // You can replace with relevant icon
             subMenu: [
                 {
-                    path:"/itemgroup",
-                    name:"Itemgroup",
-                    icon:<FaLayerGroup/>
+                    path: "/itemgroup",
+                    name: "Itemgroup",
+                    icon: <FaLayerGroup/>
                 },
                 {
-                    path:"/Items",
-                    name:"Item +",
-                    icon:<FaRegChartBar/>
+                    path: "/items",
+                    name: "Item +",
+                    icon: <FaRegChartBar/>
+                },
+                {
+                    path: "/vendor",
+                    name: "Vendor",
+                    icon: <FaUserTie/> // New icon for Vendor
                 }
             ]
         },
         {
-            path:"/sale",
-            name:"Sale",
-            icon:<FaRegChartBar/>
+            path: "/sale",
+            name: "Sale",
+            icon: <FaRegChartBar/>
         },
         {
-            path:"/purchase",
-            name:"Purchase",
-            icon:<FaShoppingBag/>
+            path: "/purchase",
+            name: "Purchase",
+            icon: <FaShoppingBag/>
         },
         {
-            path:"/report",
-            name:"Report",
-            icon:<FaThList/>
+            path: "/report",
+            name: "Report",
+            icon: <FaThList/>
         }
     ];
 
@@ -73,7 +79,7 @@ const Sidebar = ({children}) => {
                                    <div style={{display: isOpen ? "block" : "none"}} className="link_text">{item.name}</div>
                                    <div className="sub_menu_icon">{masterMenuOpen ? <FaAngleRight /> : <FaAngleRight />}</div> {/* Submenu indicator */}
                                </div>
-                               <div style={{display: masterMenuOpen && isOpen ? "block" : "none"}}> {}
+                               <div style={{display: masterMenuOpen && isOpen ? "block" : "none"}}>
                                    {item.subMenu.map((subItem, subIndex) => (
                                        <NavLink to={subItem.path} key={subIndex} className="link" activeClassName="active">
                                            <div className="icon">{subItem.icon}</div>

@@ -1,7 +1,10 @@
-// ItemGroup.jsx
 import React, { useState } from 'react';
 import "./Itemgroup.css";
 import Sidebar from '../Components/Sidebar';
+import { AgGridReact } from 'ag-grid-react';
+import 'ag-grid-community/styles/ag-grid.css';
+import 'ag-grid-community/styles/ag-theme-alpine.css';
+
 const ItemGroup = () => {
     const [showAddGroupModal, setShowAddGroupModal] = useState(false);
     const [itemGroups, setItemGroups] = useState([]);
@@ -23,55 +26,56 @@ const ItemGroup = () => {
       setShowAddGroupModal(false);
     };
 
+    const gridOptions = {
+        pagination: true,
+        paginationPageSize: 10, // Number of rows per page
+        defaultColDef: {
+            resizable: true,
+            sortable: true,
+            filter: true,
+        },
+    };
+
+    const columnDefs = [
+        { headerName: 'Group Name', field: 'name' },
+        { headerName: 'Short Name', field: 'shortName' },
+        { headerName: 'Attribute 1', field: 'attribute1' },
+        { headerName: 'Attribute 2', field: 'attribute2' },
+        { headerName: 'Attribute 3', field: 'attribute3' },
+        { headerName: 'Attribute 4', field: 'attribute4' },
+        { headerName: 'Attribute 5', field: 'attribute5' },
+        { headerName: 'Attribute 6', field: 'attribute6' },
+    ];
+
     return (
       <>
-      <Sidebar/>
-      <div className="item-group-container">
-        <div className="container1">
-          <h1 className='item-group'>Item Groups</h1>
-          <button className="btn" onClick={handleAddGroupClick}>Add New Group</button>
-        </div>
-        <hr />
-        <div className="container2">
-          <input type="text" placeholder="Search..." className="search-input" />
-          <button className="search-button">Search</button>
-        </div>
-  
-        {/* Display item groups in a table */}
-        <table className='item-group-table'>
-          <thead>
-            <tr>
-              <th>Group Name</th>
-              <th>Short Name</th>
-              <th>Attribute 1</th>
-              <th>Attribute 2</th>
-              <th>Attribute 3</th>
-              <th>Attribute 4</th>
-              <th>Attribute 5</th>
-              <th>Attribute 6</th>
-            </tr>
-          </thead>
-          <tbody>
-            {itemGroups.map((group, index) => (
-              <tr key={index}>
-                <td>{group.name}</td>
-                <td>{group.shortName}</td>
-                <td>{group.attribute1}</td>
-                <td>{group.attribute2}</td>
-                <td>{group.attribute3}</td>
-                <td>{group.attribute4}</td>
-                <td>{group.attribute5}</td>
-                <td>{group.attribute6}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-  
-        {showAddGroupModal && (
-  <AddGroupModal show={showAddGroupModal} onClose={handleAddGroupClose} onSubmit={handleAddGroupSubmit} />
-)}
+        <Sidebar/>
+        <div className="item-group-container">
+            <div className="container1">
+                <h1 className='item-group'>Item Groups</h1>
+                <button className="btn" onClick={handleAddGroupClick}>Add New Group</button>
+            </div>
+            <hr />
+        
 
-      </div>
+            {/* AG Grid */}
+            <div className="ag-theme-alpine" style={{ height: '500px', width: '100%' }}>
+            <div className="search-bar" style={{display:'flex',gap:'20px',justifyContent: 'flex-end'}}>
+                    <input type="text" placeholder="Search..." className="search-input" />
+                    <button className="search-button" style={{width:'fit-content',margin:'2px'}}>Search</button>
+                </div>
+                <AgGridReact
+                    gridOptions={gridOptions}
+                    columnDefs={columnDefs}
+                    rowData={itemGroups}
+                />
+            </div>
+
+            {showAddGroupModal && (
+                <AddGroupModal show={showAddGroupModal} onClose={handleAddGroupClose} onSubmit={handleAddGroupSubmit} />
+            )}
+
+        </div>
       </>
     );
 };
@@ -89,82 +93,93 @@ const AddGroupModal = ({show, onClose, onSubmit }) => {
     console.log("AddGroupModal mounted");
 
     const handleSubmit = () => {
-      console.log("Submit clicked");
-      if (!groupName || !groupShortName) {
-        alert('Please enter group name and short name');
-        return;
-      }
-  
-      onSubmit({
-        name: groupName,
-        shortName: groupShortName,
-        attribute1,
-        attribute2,
-        attribute3,
-        attribute4,
-        attribute5,
-        attribute6,
-      });
-  
-      setGroupName('');
-      setGroupShortName('');
-      setAttribute1('');
-      setAttribute2('');
-      setAttribute3('');
-      setAttribute4('');
-      setAttribute5('');
-      setAttribute6('');
-  
-      onClose();
+        console.log("Submit clicked");
+        if (!groupName || !groupShortName) {
+            alert('Please enter group name and short name');
+            return;
+        }
+    
+        onSubmit({
+            name: groupName,
+            shortName: groupShortName,
+            attribute1,
+            attribute2,
+            attribute3,
+            attribute4,
+            attribute5,
+            attribute6,
+        });
+    
+        setGroupName('');
+        setGroupShortName('');
+        setAttribute1('');
+        setAttribute2('');
+        setAttribute3('');
+        setAttribute4('');
+        setAttribute5('');
+        setAttribute6('');
+    
+        onClose();
     };
   
     return (
-      <div className={`modal ${show ? 'show' : ''}`}>
-        <div className="modal-content1">
-          <span className="item-group-close" onClick={onClose}>&times;</span>
-          <h2 style={{padding:'20px',textAlign:'center'}}>Add New Group</h2>
-          <div className='group-con' style={{display: 'flex',gap: '40px'}}>
-           <div style={{display:'flex',marginLeft:'40px'}}>
-          <label>Group Name:</label>
-          
-          <input  className="group-input" type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
-          </div>
-          <div style={{display:'flex'}}>
-          <label style={{}}>Short Name:</label>
-          <input className="group-input" type="text" value={groupShortName} onChange={(e) => setGroupShortName(e.target.value)} />
-          </div>
-          </div>
-          <div className='group-con' style={{display: 'flex',gap: '40px',padding:'10px'}}>
-          <div style={{display:'flex',marginLeft:'40px'}}>
-          <label>Attribute 1:</label>
-          <input className="group-input" type="text" value={attribute1} onChange={(e) => setAttribute1(e.target.value)} />
-          </div>
-          <div style={{display:'flex'}}>
-          <label>Attribute 2:</label>
-          <input className="group-input" type="text" value={attribute2} onChange={(e) => setAttribute2(e.target.value)} />
-          </div>
-          <div style={{display:'flex'}}>
-          <label>Attribute 3:</label>
-          <input className="group-input" type="text" value={attribute3} onChange={(e) => setAttribute3(e.target.value)} />
-          </div>
-          </div>
-          <div className='group-con' style={{display: 'flex',gap: '40px',padding:'10px'}}>
-          <div style={{display:'flex',marginLeft:'40px'}}>
-          <label>Attribute 4:</label>
-          <input className="group-input" type="text" value={attribute4} onChange={(e) => setAttribute4(e.target.value)} />
-          </div>
-          <div style={{display:'flex'}}>
-          <label>Attribute 5:</label>
-          <input className="group-input"  type="text" value={attribute5} onChange={(e) => setAttribute5(e.target.value)} />
-          </div>
-          <div style={{display:'flex'}}>
-          <label>Attribute 6:</label>
-          <input className="group-input" type="text" value={attribute6} onChange={(e) => setAttribute6(e.target.value)} />
-          </div>
-          </div>
-          <button className="submit-btn" style={{marginLeft:'60px',}} onClick={handleSubmit}>Submit</button>
+        <div className={`modal ${show ? 'show' : ''}`}>
+            <div className="modal-content1">
+                <span className="item-group-close" onClick={onClose}>&times;</span>
+                <h2 style={{padding:'0px',textAlign:'center'}}>Add New Group</h2>
+                <br></br>
+                <div className='group-con' style={{display: 'flex',gap: '66px'}}>
+                    <div style={{display:'flex',marginLeft:'40px',alignItems:'center',gap:'6px'}}>
+                        <label style={{minWidth:"136px"}}>Group Name:</label>
+                        <input  className="group-input" type="text" value={groupName} onChange={(e) => setGroupName(e.target.value)} />
+                    </div>
+                    <div style={{display:'flex',alignItems:'center',gap:'6px'}}>
+                        <label style={{minWidth:"136px"}}>Short Name:</label>
+                        <input className="group-input" type="text" value={groupShortName} onChange={(e) => setGroupShortName(e.target.value)} />
+                    </div>
+                </div>
+                <div className='group-con' style={{display: 'flex',gap: '66px'}}>
+                    <div style={{display:'flex',marginLeft:'40px',alignItems:'center',gap:'6px'}}>
+                        <label style={{minWidth:"136px"}} >Attribute 1:</label>
+                        <input className="group-input" type="text" value={attribute1} onChange={(e) => setAttribute1(e.target.value)} />
+                    </div>
+                    <div style={{display:'flex',alignItems:'center',gap:'6px'}}>
+                        <label style={{minWidth:"136px"}}>Attribute 2:</label>
+                        <input className="group-input" type="text" value={attribute2} onChange={(e) => setAttribute2(e.target.value)} />
+                    </div>
+                    </div>
+                    <div className='group-con' style={{display: 'flex',gap: '66px'}}>
+                    <div style={{display:'flex',marginLeft:'40px',alignItems:'center',gap:'6px'}}>
+                        <label style={{minWidth:"136px"}}>Attribute 3:</label>
+                        <input className="group-input" type="text" value={attribute3} onChange={(e) => setAttribute3(e.target.value)} />
+                    </div>
+                
+
+                    <div style={{display:'flex',alignItems:'center',gap:'6px'}}>
+                        <label style={{minWidth:"136px"}}>Attribute 4:</label>
+                        <input className="group-input" type="text" value={attribute4} onChange={(e) => setAttribute4(e.target.value)} />
+                    </div>
+                    </div>
+                    <div className='group-con' style={{display: 'flex',gap: '66px'}}>
+                    <div style={{display:'flex',marginLeft:'40px',alignItems:'center',gap:'6px'}}>
+                        <label style={{minWidth:"136px"}}>Attribute 5:</label>
+                        <input className="group-input"  type="text" value={attribute5} onChange={(e) => setAttribute5(e.target.value)} />
+                    </div>
+                    <div style={{display:'flex',alignItems:'center',gap:'6px'}}>
+                        <label style={{minWidth:"136px"}}>Attribute 6:</label>
+                        <input className="group-input" type="text" value={attribute6} onChange={(e) => setAttribute6(e.target.value)} />
+                    </div>
+                </div>
+                <div className="button-container" style={{ marginTop:"16px",marginRight:"36px",display: "flex", justifyContent: "flex-end", gap: "10px" }}>
+          <button className="vendor-submit-btn" onClick={handleSubmit}>
+            Submit
+          </button>
+          <button className="cancel-btn" onClick={onClose}>
+            Cancel
+          </button>
         </div>
-      </div>
+            </div>
+        </div>
     );
 };
 

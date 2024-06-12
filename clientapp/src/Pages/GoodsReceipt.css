@@ -1,0 +1,21 @@
+.goods-receipt-container {
+    padding: 20px;
+    margin-left: 200px; /* Adjust if you have a fixed sidebar width */
+  }
+  
+  .goods-receipt-title {
+    font-size: 24px;
+    /* margin-bottom: 20px; */
+    text-align: center;
+  }
+  
+  button.btn-primary {
+    margin-bottom: 20px;
+  }
+  
+  .ag-theme-alpine {
+    margin-top: 20px;
+  }
+  
+
+ 

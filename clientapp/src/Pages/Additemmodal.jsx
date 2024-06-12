@@ -75,15 +75,15 @@ const Additemmodal = ({ onClose, onSubmit }) => {
                 <span className="close" onClick={onClose}>&times;</span>
                 <h1 style={{color: 'blue',textAlign:'center',padding:'10px', textDecoration:'solid'}}>Add New Item</h1>
                 <div className="item-form-container">
-                    <div className="item-container" style={{display:'flex',gap:'100px'}}>
-                        <div style={{display:'flex' ,gap:'6px'}}>
-                            <label>Product Name:</label>
-                            <input type="text" value={items[0].productName} onChange={(e) => handleChange(0, 'productName', e.target.value)} />
+                    <div className="item-container" style={{display:'flex',gap:'83px'}}>
+                        <div style={{display:'flex' ,gap:'6px',alignItems:'center'}}>
+                            <label >Product Name:</label>
+                            <input type="text" style={{border:"none",borderBottom:"2px solid rgb(200, 185, 185)",background:"#faf8f8"}} value={items[0].productName} onChange={(e) => handleChange(0, 'productName', e.target.value)} />
                         </div>
-                        <div style={{display:'flex',gap:'6px'}}>
+                        <div style={{display:'flex',gap:'6px',alignItems:'center'}}>
                             <label>Group Name:</label> 
                             {/* Dropdown for Group Name */}
-                            <select value={items[0].groupName} onChange={(e) => handleChange(0, 'groupName', e.target.value)} style={{ minWidth: '200px',border: 'solid 1px black',radius: '5px' }}>
+                            <select value={items[0].groupName} onChange={(e) => handleChange(0, 'groupName', e.target.value)} style={{ minWidth: '200px',border:"none",borderBottom:"2px solid rgb(200, 185, 185)",background:"#faf8f8",height:'33px' }}>
                                 {groupOptions.map((option, index) => (
                                     <option key={index} value={option}>{option}</option>
                                 ))}
@@ -93,41 +93,41 @@ const Additemmodal = ({ onClose, onSubmit }) => {
                     
                     {/* Rest of your form */}
                     <div className='item-container' style={{display:'flex',gap:'160px'}}>
-                        <div style={{display:'flex',gap:'6px'}}>
+                        <div style={{display:'flex',gap:'12px',alignItems:'center'}}>
                             <label>Is Active:</label>
                             <input style={{width:'fit-content'}} type="checkbox" checked={items[0].isActive} onChange={(e) => handleChange(0, 'isActive', e.target.checked)} />
                         </div>
-                        <div style={{display:'flex',gap:'6px'}}>
+                        <div style={{display:'flex',gap:'6px',alignItems:'left',marginLeft:'100px'}}>
                             <label>HSN Code:</label>
-                            <input type="text" value={items[0].hsnCode} onChange={(e) => handleChange(0, 'hsnCode', e.target.value)} />
+                            <input type="text" style={{border:"none",borderBottom:"2px solid rgb(200, 185, 185)",background:"#faf8f8"}} value={items[0].hsnCode} onChange={(e) => handleChange(0, 'hsnCode', e.target.value)} />
                         </div>
-                        <div style={{display:'flex',gap:'6px'}}>
+                        <div style={{display:'flex',gap:'6px',alignItems:'center',marginRight:'50px'}}>
                             <label>Unit:</label>
-                            <input type="text" value={items[0].unit} onChange={(e) => handleChange(0, 'unit', e.target.value)} />
+                            <input type="text" style={{border:"none",borderBottom:"2px solid rgb(200, 185, 185)",background:"#faf8f8"}} value={items[0].unit} onChange={(e) => handleChange(0, 'unit', e.target.value)} />
                         </div>
                     </div>
                     
                     <div className="item-container" style={{display:'flex',gap:'100px'}}>
-                        <div style={{display:'flex',gap:'6px'}}>
+                        <div style={{display:'flex',gap:'6px',alignItems:'center'}}>
                             <label>Description:</label>
-                            <input type="text"  value={items[0].description} onChange={(e) => handleChange(0, 'description', e.target.value)}  />
+                            <input type="text" style={{border:"none",borderBottom:"2px solid rgb(200, 185, 185)",background:"#faf8f8"}} value={items[0].description} onChange={(e) => handleChange(0, 'description', e.target.value)}  />
                         </div>
-                        <div style={{display:'flex',gap:'6px'}}>
+                        <div style={{display:'flex',gap:'6px',alignItems:'center'}}>
                             <label>Weight:</label>
-                            <input type="text" value={items[0].weight} onChange={(e) => handleChange(0, 'weight', e.target.value)} />
+                            <input type="text" style={{border:"none",borderBottom:"2px solid rgb(200, 185, 185)",background:"#faf8f8"}} value={items[0].weight} onChange={(e) => handleChange(0, 'weight', e.target.value)} />
                         </div>
-                        <div style={{display:'flex',gap:'6px'}}>
+                        <div style={{display:'flex',gap:'6px',alignItems:'center'}}>
                             <label>Height:</label>
-                            <input type="text" value={items[0].height} onChange={(e) => handleChange(0, 'height', e.target.value)} />
+                            <input type="text" style={{border:"none",borderBottom:"2px solid rgb(200, 185, 185)",background:"#faf8f8"}} value={items[0].height} onChange={(e) => handleChange(0, 'height', e.target.value)} />
                         </div>
-                        <div style={{display:'flex',gap:'6px'}}>
+                        <div style={{display:'flex',gap:'6px',alignItems:'center'}}>
                             <label>Length:</label>
-                            <input type="text" value={items[0].length} onChange={(e) => handleChange(0, 'length', e.target.value)} />
+                            <input type="text" style={{border:"none",borderBottom:"2px solid rgb(200, 185, 185)",background:"#faf8f8"}} value={items[0].length} onChange={(e) => handleChange(0, 'length', e.target.value)} />
                         </div>
                     </div>
                 </div>
                 <br /><br />
-                <hr></hr>
+                <hr style={{color:'black',bordertop: '3px solid black'}}></hr>
                 <div className="tab-container">
                     <div className={`tab ${activeTab === 'details' ? 'active' : ''}`} onClick={() => handleTabChange('details')}>
                         Details
@@ -194,16 +194,6 @@ const Additemmodal = ({ onClose, onSubmit }) => {
                     </>
                 )}
                 <br /><br />
-                <div className="item-container" style={{display:'flex',gap:'100px'}}>
-                    <div style={{display:'flex',gap:'6px'}}>
-                        <label>Created On:</label>
-                        <input type="text"  value={items[0].description} onChange={(e) => handleChange(0, 'createdon', e.target.value)}  />
-                    </div>
-                    <div style={{display:'flex',gap:'6px'}}>
-                        <label>Created By:</label>
-                        <input type="text" value={items[0].weight} onChange={(e) => handleChange(0, 'createdBy', e.target.value)} />
-                    </div>
-                </div>
                 <button className="item-submit" onClick={handleSubmit}>Submit</button>
             </div>
         </div>

@@ -1,15 +1,15 @@
 /* ItemGroupPage.css */
-.sidebar {
+.sidebar { 
   position: fixed;
   top: 0;
   left: 0;
   height: 100vh;
   width: fit-content
-}
-
+ } 
 .item-group-container {
-  margin-left: 200px;
-  width: calc(100% - 300px);
+  margin-left: 200px; 
+  width: calc(100% - 300px);  
+  transition: width 0.3s;
   padding: 20px;
   height: 100vh;
 }
@@ -23,14 +23,15 @@
 
 }
 .container2{
-  display: flex;
+  
+  /* display: flex; */
   padding: 3px;
   float: right;
-  gap: 100px;
+  /* gap: 100px; */
   margin: 10px;
 
 }
-.search-button {
+/* .search-button { 
   padding: 0px 15px;
   background-color: #007bff;
   color: white;
@@ -41,7 +42,7 @@
   position: relative;
   right: 95px;
   margin-bottom: 5px;
-}
+/ } */
 .btn{
   padding: 10px 10px;
   background-color: #007bff;
@@ -74,7 +75,7 @@ th {
 .modal {
   display: flex; 
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   left: 400px;
   top: 50px;
   width: fit-content;
@@ -87,25 +88,35 @@ th {
 .modal-content1 {
   display: flex;
   flex-direction: column;
-  background-color: #fefefe;
+  background-color: #ffffff;
   margin: 10px 10px;
-  padding: 20px;
-  border: 1px solid #888;
+  padding: 5px;
+  border-top: 10px solid #1799ea;
+  box-shadow: 0px 4px 6px rgba(80, 74, 74, 0.1);
   border-radius: 5px;
   width: 900px;
-  height: 400px;
+  height: 450px;
   overflow: auto;
 }
 .modal .show{
   display: flex;
 }
 .group-input{
-  width: 160px;
-  border: 1px solid black;
+  width: 200px;
+  border: 1px solid rgb(177, 171, 171);
+  background-color: #ffffff;
+  /* border: none; */
+  /* background-color: #faf8f8; */
+  /* border-bottom: 1px solid rgb(200, 185, 185); */
+  margin-top: 10px;
   border-radius: 3px;
 }
 .group-con{
   display: flex;
+  gap: 40px;
+  /* border-top: 2px solid rgb(255, 255, 255);  */
+  /* box-shadow: 0px 4px 6px rgba(80, 74, 74, 0.1); */
+  padding-bottom: 10px;
 }
 .item-group-close {
   color: #aaa;
@@ -128,9 +139,9 @@ th {
 }
 
 .search-input{
-  max-width: 150px;
-  margin-bottom: 5px;
-  border: 1px solid rgb(210, 207, 207);
+  max-width: 200px;
+  margin: 5px;
+  border: 1px solid rgb(167, 165, 165);
 }
 }
 
@@ -141,8 +152,8 @@ h2{
   
 }
 .submit-btn{
-  width: fit-content;
-  margin-left: 0px;
-  border-radius: 15px;
+  width: 100px;
+  border-radius: 3px;
   padding: 10px 10px;
+  height: 40px
 }
